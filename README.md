@@ -96,4 +96,43 @@ Puis ouvrir le navigateur à l’adresse :
 http://127.0.0.1:5000
 
 
+## Utilisation
+
+- Créer un compte (Inscription)
+
+- Se connecter
+
+- Accéder à l’interface du chatbot
+
+- Saisir ses symptômes
+
+- Visualiser les prédictions
+
+- Consulter l’historique
+
+## Modèles Machine Learning
+Pour des raisons de taille, les fichiers de modèles ne sont pas stockés sur GitHub.
+
+Pour les générer localement :
+
+    -Ouvrir le notebook Jupyter
+
+    -Lancer les cellules d’entraînement
+
+    -Générer :
+
+      -svm_classifier.pkl
+
+      -sbert_encoder.pkl
+
+      -symptom_embeddings.npy
+
+      -df_index.csv
+
+## Auteur
+
+Robert Bancé
+Licence 3 – Modélisation, Simulation et Calcul Scientifique
+Université Virtuelle du Burkina Faso
+Adresse email: bancerbancerobert6@gmail.com
 

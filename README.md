@@ -139,7 +139,8 @@ Pour les générer localement :
 Robert Bancé
 Licence 3 – Modélisation, Simulation et Calcul Scientifique
 Université Virtuelle du Burkina Faso
-Adresse email: bancerbancerobert6@gmail.com
+Adresse email: bancerobert6@gmail.com
+
 
 
 

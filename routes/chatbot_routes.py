@@ -26,7 +26,7 @@ svm = joblib.load(SVM_PATH)
 embeddings = np.load(EMB_PATH)
 df_index = pd.read_csv(DF_PATH)
 
-# Chargement SBERT directement depuis Hugging Face (plus besoin de fichier local)
+# Chargement SBERT directement depuis Hugging Face
 encoder = SentenceTransformer("sentence-transformers/paraphrase-multilingual-mpnet-base-v2")
 
 

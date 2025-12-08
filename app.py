@@ -8,10 +8,10 @@ from flask_cors import CORS
 from apscheduler.schedulers.background import BackgroundScheduler
 from pywebpush import webpush
 
-# --- Connexion MongoDB ---
+#  Connexion MongoDB
 from database.mongo_connection import db
 
-# --- Chemin racine ---
+# --- Chemin racine -
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
@@ -135,5 +135,7 @@ def server_error(e):
 #  LANCEMENT SERVEUR
 # -------------------------------------------------------------------
 if __name__ == "__main__":
-    print("Serveur Flask démarré sur http://127.0.0.1:5000")
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
+

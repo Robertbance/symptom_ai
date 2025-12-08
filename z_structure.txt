@@ -62,4 +62,3 @@ static/css/style.css
 static/js/script.js
 routes/chatbot_routes.py (remplacer)
 routes/user_routes.py (remplacer)
-routes/dashboard_routes.py (ajouter)

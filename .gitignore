@@ -1,0 +1,5 @@
+models/*.pkl
+models/*.npy
+models/**/*.safetensors
+__pycache__/
+.env

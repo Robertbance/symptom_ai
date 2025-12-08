@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Connexion - MediBot</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body class="auth-page">
+
+  <main class="auth-card">
+    <h3>Connexion</h3>
+
+    <input id="email" placeholder="Email" type="email" required />
+    <input id="password" placeholder="Mot de passe" type="password" required />
+
+    <button id="login-btn">Se connecter</button>
+
+    <p style="margin-top:10px;">
+      Pas de compte ?
+      <a href="{{ url_for('user.register_page') }}">Inscrivez-vous</a>
+    </p>
+  </main>
+
+  <script>
+    async function login() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        alert("Veuillez remplir tous les champs.");
+        return;
+      }
+
+      const response = await fetch("/user/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ email_user: email, password })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("id_user", data.id_user);
+        window.location = "/chat";
+      } else {
+        alert(data.error || "Erreur lors de la connexion.");
+      }
+    }
+
+    document.getElementById("login-btn").onclick = login;
+
+    document.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") login();
+    });
+  </script>
+
+</body>
+</html>

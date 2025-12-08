@@ -1,0 +1,65 @@
+📦 chatbot_medi/
+│
+├── 📁 Myenv/
+│     └── (environnement virtuel Python)
+│
+├── 📁 database/
+│     ├── mongo_connection.py          # connexion MongoDB
+│     ├── init_collections.py          # création des collections
+│     └── queries.py                   # fonctions d’accès à la BD
+│
+├── 📁 models/
+│     ├── utilisateur_model.py         # schémas MongoDB
+│     ├── maladie_model.py
+│     ├── symptome_model.py
+│     ├── diagnostic_model.py
+│     ├── notification_model.py
+│     ├── model_svm.pkl                # modèle entraîné
+│     └── sentence_bert_encoder.pkl    # encodeur SBERT
+│
+├── 📁 notebooks/
+│     ├── 01_preparation_dataset.ipynb
+│     ├── 02_cleaning_text.ipynb
+│     ├── 03_training_model.ipynb
+│     ├── 04_evaluation_model.ipynb
+│     └── 05_export_model.ipynb
+│
+├── 📁 routes/
+│     ├── chatbot_routes.py            # chatbot API
+│     ├── diagnostic_routes.py         # diagnostic médical
+│     ├── user_routes.py               # login / register
+│     └── maladie_routes.py            # gestion maladies
+│
+├── 📁 static/
+│     ├── 📁 css/
+│     │     └── style.css
+│     │
+│     ├── 📁 images/
+│     │     └── logo.png
+│     │
+│     └── 📁 js/
+│           └── script.js
+│
+├── 📁 templates/
+│     ├── index.html                   # chatbot
+│     ├── login.html
+│     ├── register.html
+│     ├── dashboard.html               # tableau de bord utilisateur
+│     └── historique.html              # historique des diagnostics
+│
+├── app.py                             # point d’entrée Flask
+├── config.py                          # configurations globales
+├── requirements.txt                   # dépendances Python
+└── README.md                          # documentation
+
+
+
+
+Test des pages
+
+templates/chat.html, login.html, register.html, dashboard.html
+static/css/style.css
+static/js/script.js
+routes/chatbot_routes.py (remplacer)
+routes/user_routes.py (remplacer)
+routes/dashboard_routes.py (ajouter)

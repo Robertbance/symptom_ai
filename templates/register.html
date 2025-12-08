@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Inscription - SymptomAI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body class="auth-page">
+
+  <main class="auth-card">
+    <h3>Inscription</h3>
+
+    <input id="nom" placeholder="Nom" type="text" />
+    <input id="prenom" placeholder="Prénom" type="text" />
+    <input id="email" placeholder="Email" type="email" />
+    <input id="sexe" placeholder="Sexe (H/F)" type="text" />
+    <input id="age" placeholder="Âge" type="number" />
+    <input id="password" placeholder="Mot de passe" type="password" />
+
+    <button id="register-btn">S'inscrire</button>
+
+    <p style="margin-top:10px;">
+      Déjà inscrit ?
+      <a href="{{ url_for('user.login_page') }}">Se connecter</a>
+    </p>
+  </main>
+
+<script>
+  async function register() {
+
+    const body = {
+      nom_user: document.getElementById("nom").value.trim(),
+      prenom_user: document.getElementById("prenom").value.trim(),
+      email_user: document.getElementById("email").value.trim(),
+      sexe_user: document.getElementById("sexe").value.trim(),
+      age_user: document.getElementById("age").value,
+      password: document.getElementById("password").value
+    };
+
+    const res = await fetch("/user/register", {
+      method:"POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(body)
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert("Inscription réussie !");
+      window.location = "/user/login";
+    } else {
+      alert(data.error || "Erreur lors de l'inscription.");
+    }
+  }
+
+  document.getElementById("register-btn").onclick = register;
+</script>
+
+</body>
+</html>

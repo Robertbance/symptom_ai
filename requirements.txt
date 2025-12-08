@@ -1,0 +1,17 @@
+Flask
+pymongo
+dnspython
+scikit-learn
+pandas
+numpy
+spacy
+nltk
+tensorflow
+joblib
+gunicorn
+flask-cors
+sentence-transformers
+werkzeug
+deep-translator
+apscheduler
+pywebpush

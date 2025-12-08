@@ -1,0 +1,542 @@
+/* ============================================================
+   🌐 RESET & BASE
+============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f6f8fa;
+    display: flex;
+    flex-direction: column;
+    color: #1a1a1a;
+}
+
+/* ============================================================
+   🧭 HEADER (Aligné – Version Pro)
+============================================================ */
+.header {
+    background: linear-gradient(135deg, #4facfe, #0066cc);
+    color: white;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.header-left p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Bouton Mode sombre */
+.dark-btn {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.2s ease;
+}
+
+.dark-btn:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+/* Bouton Déconnexion */
+.logout-btn {
+    background: #ff4d4d;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #e60000;
+}
+
+/* ============================================================
+   💬 CHAT CONTAINER
+============================================================ */
+#chat-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#chat-box {
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.08);
+
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+
+    min-height: 70vh;
+    max-height: calc(100vh - 160px);
+    overflow: hidden;
+}
+
+/* ============================================================
+   💬 MESSAGES
+============================================================ */
+#messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    scroll-behavior: smooth;
+}
+
+.message {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+/* Bubbles */
+.bubble {
+    background: #e8f0fe;
+    color: #003366;
+    padding: 12px;
+    border-radius: 15px 15px 15px 0;
+    max-width: 85%;
+    word-wrap: break-word;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.user .bubble {
+    background: #0066cc;
+    color: white;
+    border-radius: 15px 15px 0 15px;
+    margin-left: auto;
+}
+
+/* Avatars */
+.bot-avatar,
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.bot-avatar {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.user-avatar {
+    background: linear-gradient(135deg, #06b6d4, #0ea5a4);
+}
+
+/* ============================================================
+   🧪 DIAGNOSTICS
+============================================================ */
+.symptom-tag {
+    background: #dff3ff;
+    color: #0066aa;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    margin: 2px;
+    display: inline-block;
+}
+
+.diagnosis-card {
+    background: #fff8db;
+    border: 1px solid #f4c542;
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.diagnosis-title {
+    font-weight: bold;
+    color: #c27a00;
+    margin-bottom: 5px;
+}
+
+.confidence-bar {
+    height: 6px;
+    background: #eee;
+    border-radius: 3px;
+    margin-top: 6px;
+}
+
+.confidence-fill {
+    height: 100%;
+    background: #10b981;
+    border-radius: 3px;
+}
+
+/* ============================================================
+   ✏️ INPUT AREA
+============================================================ */
+#input-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    outline: none;
+    transition: border 0.2s;
+}
+
+#user-input:focus {
+    border-color: #0066cc;
+}
+
+#send-btn {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 18px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#send-btn:hover {
+    background-color: #004d99;
+}
+
+/* ============================================================
+   📌 FOOTER
+============================================================ */
+.footer {
+    text-align: center;
+    font-size: 0.8em;
+    color: gray;
+    padding: 10px;
+}
+
+/* ============================================================
+   🔐 AUTH PAGES
+============================================================ */
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #f6f8fa;
+}
+
+.auth-card {
+    background: white;
+    padding: 22px 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    width: 340px;
+    text-align: center;
+}
+
+.auth-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    color: #004d80;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 11px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: border 0.2s;
+}
+
+.auth-card input:focus {
+    border-color: #0066cc;
+}
+
+.auth-card button {
+    width: 100%;
+    background: #0066cc;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s ease;
+    font-size: 1rem;
+}
+
+.auth-card button:hover {
+    background: #004d99;
+}
+
+.auth-card a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-card a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   🌙 DARK MODE (Full UI)
+============================================================ */
+body.dark {
+    background: #0f172a;
+    color: #e6eef8;
+}
+
+/* Header */
+body.dark .header {
+    background: linear-gradient(135deg, #0b314b, #072b39);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Chat */
+body.dark #chat-box {
+    background: #1e293b;
+    box-shadow: 0 0 12px rgba(0,0,0,0.5);
+}
+
+/* Messages */
+body.dark .bubble {
+    background: #1e3a5f;
+    color: #dbeafe;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+body.dark .user .bubble {
+    background: #0ea5a4;
+    color: #033;
+}
+
+/* Diagnostic */
+body.dark .diagnosis-card {
+    background: #2d3648;
+    border-color: #c6971b;
+}
+
+body.dark .symptom-tag {
+    background: #1e293b;
+    color: #7dd3fc;
+}
+
+/* Inputs */
+body.dark #user-input {
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+}
+
+body.dark #user-input:focus {
+    border-color: #38bdf8;
+}
+
+/* Buttons */
+body.dark #send-btn {
+    background: #075985;
+}
+
+body.dark #send-btn:hover {
+    background: #0369a1;
+}
+
+/* Auth */
+body.dark .auth-page {
+    background: #0f172a;
+}
+
+body.dark .auth-card {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.dark .auth-card input {
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+}
+
+body.dark .auth-card button {
+    background: #0369a1;
+}
+
+body.dark .auth-card button:hover {
+    background: #0284c7;
+}
+
+body.dark .auth-card a {
+    color: #38bdf8;
+}
+
+/* ============================================================
+   📱 RESPONSIVE
+============================================================ */
+@media (max-width: 600px) {
+
+    #chat-box {
+        padding: 10px;
+        border-radius: 10px;
+        max-height: calc(100vh - 150px);
+    }
+
+    .header h2 {
+        font-size: 1.2rem;
+    }
+
+    .bubble {
+        font-size: 0.9rem;
+    }
+
+    .auth-card {
+        width: 90%;
+    }
+}
+
+/* HERO ACCUEIL */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 8%;
+    gap: 30px;
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.hero-content h1 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #4b5563;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+}
+
+.cta-btn {
+    background: #0066cc;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.cta-btn:hover {
+    background: #004d99;
+}
+
+.cta-btn.secondary {
+    background: #e5e7eb;
+    color: #1f2937;
+}
+
+.cta-btn.secondary:hover {
+    background: #d1d5db;
+}
+
+/* HERO IMAGE */
+.hero-img {
+    width: 420px;
+    height: 320px;
+    background: url('https://cdn-icons-png.flaticon.com/512/2966/2966487.png')
+        no-repeat center/contain;
+}
+
+
+/* FEATURES */
+.features {
+    margin-top: 50px;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.feature-card h3 {
+    color: #004d80;
+    margin-bottom: 8px;
+}
+
+/* DARK MODE FOR INDEX */
+body.dark .hero-content h1 {
+    color: #dbeafe;
+}
+
+body.dark .hero-content p {
+    color: #cbd5e1;
+}
+
+body.dark .feature-card {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.dark .cta-btn.secondary {
+    background: #334155;
+    color: white;
+}
+
+body.dark .cta-btn.secondary:hover {
+    background: #1e293b;
+}

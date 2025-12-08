@@ -1,0 +1,63 @@
+<!-- templates/chat.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SymtomAI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="header">
+  <div class="header-left">
+    <h2>🤖 SymtomAI</h2>
+    <p>Analyse intelligente de vos symptômes</p>
+  </div>
+
+  <div class="header-right">
+    <!-- bouton thème sombre -->
+    <button id="dark-toggle" class="dark-btn" aria-label="Toggle dark mode">🌙</button>
+
+    <!-- lien vers profil -->
+    <button id="profile-btn" class="logout-btn" style="background:#0ea5a4;">👤 Profil</button>
+
+    <!-- lien historique -->
+    <button id="history-btn" class="logout-btn" style="background:#3b82f6;">🕘 Historique</button>
+
+     </div>
+</header>
+
+
+
+  <div id="chat-container">
+    <div id="chat-box">
+      <div id="messages">
+        <div class="message bot">
+          <div class="avatar bot-avatar"></div>
+          <div class="bubble">👋 Bonjour ! Je suis SymtomAI, votre assistant intelligent. Dites-moi ce que vous ressentez et je vous aiderai à évaluer vos symptômes.</div>
+
+        </div>
+      </div>
+
+      <div id="input-container">
+        <input id="user-input" type="text" placeholder="Ex: J’ai mal à la tête et de la fièvre...">
+        <button id="send-btn">Envoyer</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    ⚠️ Les réponses fournies par SymtomAI sont des suggestions pouvant être inexactes. 
+    Consultez un professionnel de santé pour tout diagnostic réel.
+</footer>
+
+<script>
+function logout() {
+    localStorage.removeItem("id_user");
+    window.location = "/user/login";
+}
+</script>
+  <script src="/static/js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!-- templates/history.html -->
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Historique - MediBot</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <h2>🕘 Historique</h2>
+      <p>Vos diagnostics précédents</p>
+    </div>
+    <div class="header-right">
+      <button id="dark-toggle" class="dark-btn">🌙</button>
+      <button onclick="window.location='/chat'" class="logout-btn" style="background:#3b82f6">↩️ Retour</button>
+    </div>
+  </header>
+
+  <main style="padding:20px;">
+    <div style="max-width:900px; margin:auto;">
+      <div id="history-list">
+        <!-- rempli par JS -->
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const id_user = localStorage.getItem("id_user");
+    if (!id_user) window.location = "/user/login";
+
+    fetch("/user/history/data", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ id_user })
+    }).then(r=>r.json()).then(j=>{
+      if (j.error) { document.getElementById("history-list").innerText = j.error; return; }
+      const list = j.diagnostics || [];
+      if (list.length === 0) {
+        document.getElementById("history-list").innerHTML = "<p>Aucun diagnostic enregistré.</p>";
+        return;
+      }
+      const html = list.map(d => `
+        <div class="diagnosis-card" style="margin-bottom:10px;">
+          <div><strong>Date:</strong> ${new Date(d.date_diagnostic).toLocaleString()}</div>
+          <div><strong>Maladie:</strong> ${d.id_maladie || d.maladie_predite || '—'}</div>
+          <div><strong>Confiance:</strong> ${(d.confiance_diagnostic*100||0).toFixed(1)}%</div>
+          <div style="margin-top:6px;"><strong>Recommandation:</strong> ${d.recommandations_diagnostic || ''}</div>
+          <div style="margin-top:8px;"><strong>Symptômes:</strong> ${Array.isArray(d.symptomes)? d.symptomes.map(s=>s.nom_symptome||s).join(', '): d.symptomes}</div>
+        </div>
+      `).join("");
+      document.getElementById("history-list").innerHTML = html;
+    });
+  </script>
+
+  <script src="/static/js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Profil - SymtomAI</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<header class="header" >
+    <div class="header-left">
+      <h2>👤 Mon profil</h2>
+      <p>Informations personnelles</p>
+    </div>
+    <div class="header-right">
+      <button id="dark-toggle" class="dark-btn">🌙</button>
+      <button onclick="window.location='/chat'" class="logout-btn" style="background:#3b82f6">↩️ Retour</button>
+    </div>
+</header>
+
+<main style="padding:20px position:center padding:10px;">
+    <div class="auth-card" style="width:auto; max-width:auto; position:auto;">
+      <h3>Détails utilisateur</h3>
+
+      <p><strong>Nom :</strong> <span id="p-nom">—</span></p>
+      <p><strong>Prénom :</strong> <span id="p-prenom">—</span></p>
+      <p><strong>Email :</strong> <span id="p-email">—</span></p>
+      <p><strong>Sexe :</strong> <span id="p-sexe">—</span></p>
+      <p><strong>Âge :</strong> <span id="p-age">—</span></p>
+      <p><strong>Inscrit le :</strong> <span id="p-date">—</span></p>
+
+      <hr style="margin:12px 0;">
+
+      <button id="view-history" class="auth-card button" style="background:#3b82f6; color:white;">Voir mon historique</button>
+      <button onclick="logout()" class="logout-btn" style="background:#ff4d4d;">Déconnexion</button>
+    </div>
+</main>
+
+<!-- CHARGER LE DARKMODE EN PREMIER -->
+<script src="/static/js/theme.js"></script>
+
+<script>
+// Déconnexion
+function logout() {
+  localStorage.removeItem("id_user");
+  window.location = "/";//Orientation vers la page d'accueil
+}
+
+// Sécurité
+const id_user = localStorage.getItem("id_user");
+if (!id_user) {
+    window.location = "/user/login";
+}
+
+// Charger les infos du profil
+fetch("/user/profile/data", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ id_user })
+})
+.then(r => r.json())
+.then(j => {
+    if (j.error) { alert(j.error); return; }
+
+    document.getElementById("p-nom").textContent = j.nom_user || "—";
+    document.getElementById("p-prenom").textContent = j.prenom_user || "—";
+    document.getElementById("p-email").textContent = j.email_user || "—";
+    document.getElementById("p-sexe").textContent = j.sexe_user || "—";
+    document.getElementById("p-age").textContent = j.age_user || "—";
+    document.getElementById("p-date").textContent = j.date_inscrit_user?.split("T")[0] || "—";
+});
+
+// Redirection historique
+document.getElementById("view-history").onclick = () => {
+    window.location = "/user/history";
+};
+</script>
+
+</body>
+</html>

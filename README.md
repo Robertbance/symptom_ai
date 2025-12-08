@@ -81,22 +81,23 @@ symptom_ai/
 git clone https://github.com/Robertbance/symptom_ai.git
 cd symptom_ai
 
-### Environnement virtuel
+## Environnement virtuel
 
 python -m venv venv
 venv\Scripts\activate
 
-### Installation des dépendances
+## Installation des dépendances
 pip install -r requirements.txt
 
-### Lancement de l'application
+## Lancement de l'application
 python app.py
 
 Puis ouvrir le navigateur à l’adresse :
 http://127.0.0.1:5000
 
+---
 
-## Utilisation
+# Utilisation
 
 - Créer un compte (Inscription)
 
@@ -110,7 +111,9 @@ http://127.0.0.1:5000
 
 - Consulter l’historique
 
-## Modèles Machine Learning
+---
+
+# Modèles Machine Learning
 Pour des raisons de taille, les fichiers de modèles ne sont pas stockés sur GitHub.
 
 Pour les générer localement :
@@ -129,11 +132,14 @@ Pour les générer localement :
 
       -df_index.csv
 
-## Auteur
+---
+
+# Auteur
 
 Robert Bancé
 Licence 3 – Modélisation, Simulation et Calcul Scientifique
 Université Virtuelle du Burkina Faso
 Adresse email: bancerbancerobert6@gmail.com
+
 
 

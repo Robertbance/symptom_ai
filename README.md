@@ -1,6 +1,6 @@
 # SymptomAI – Chatbot de Diagnostic Médical Préliminaire
 
-SymptomAI est un chatbot intelligent développé dans un cadre académique. Il permet aux utilisateurs de décrire leurs symptômes en langage naturel et d’obtenir une évaluation médicale préliminaire basée sur des techniques de Traitement du Langage Naturel (NLP) et de Machine Learning.
+SymptomAI est un chatbot intelligent qui permet aux utilisateurs de décrire leurs symptômes en langage naturel et d’obtenir une évaluation médicale préliminaire basée sur des techniques de Traitement du Langage Naturel (NLP) et de Machine Learning.
 
 Ce projet est conçu uniquement à des fins pédagogiques et ne remplace pas un diagnostic médical professionnel.
 

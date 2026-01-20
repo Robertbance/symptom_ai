@@ -32,14 +32,7 @@ def normalize_text(text: str) -> str:
 
 
 def clean_text(text: str) -> str:
-    """
-    Pipeline complet de nettoyage NLP :
-    - normalisation
-    - tokenisation spaCy
-    - suppression stopwords
-    - Lemmatisation
-    - Filtrage tokens non alphabétiques
-    """
+
     text = normalize_text(text)
     doc = nlp(text)
 
